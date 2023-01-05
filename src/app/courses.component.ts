@@ -15,7 +15,7 @@ import { CoursesService } from "./courses.service";
     {{ course.startDate | date: 'shortDate'}} <br/>
     <input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/>
     <!-- use custom pipe to create textual summary from wiki  -->
-    {{ text | summary }}
+    {{ text }}
     <h1 [textContent]="location"></h1><img  [src] ="imageUrl"/>
     <div (click)= "onDivClicked()">
     <button (click)="onSave($event)" class="btn btn-primary" [class.active]="isActive" [style.backgroundColor] = "isActive ? 'blue': 'white'">Save</button>
