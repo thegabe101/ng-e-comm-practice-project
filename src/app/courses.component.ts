@@ -7,8 +7,9 @@ import { CoursesService } from "./courses.service";
 @Component({
     selector: 'courses', 
     template: `
-    <input (keyup)="onKeyUp($event)"/>
-    <input #email (keyup)="onKeyUpEmailValue($event, email.value)"/>
+    <!-- <input (keyup)="onKeyUp($event)"/> -->
+    <!-- <input #email (keyup)="onKeyUpEmailValue($event, email.value)"/> -->
+    <input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/>
     <h1 [textContent]="title"></h1><img [src] ="imageUrl"/>
     <div (click)= "onDivClicked()">
     <button (click)="onSave($event)" class="btn btn-primary" [class.active]="isActive" [style.backgroundColor] = "isActive ? 'blue': 'white'">Save</button>
@@ -23,16 +24,14 @@ import { CoursesService } from "./courses.service";
 //remember that most html elements have a one to one mapping in the dom, but colspan is not one of them
 
 export class CoursesComponent {
+    email;
     title = "Seattle";
     imageUrl = 'https://imageio.forbes.com/i-forbesimg/media/lists/places/seattle-wa_416x416.jpg?format=jpg&height=416&width=416&fit=bounds';
     colSpan = 2;
     courses;
     isActive = true;
-    onKeyUp($event) {
-        if ($event.keyCode === 13) {
-            console.log('Enter was pressed');
-            console.log($event.target.value)
-        } else console.log('Different key pressed.')
+    onKeyUp() {
+        console.log(this.email);
     }
     onDivClicked() {
         console.log('Div clicked');
