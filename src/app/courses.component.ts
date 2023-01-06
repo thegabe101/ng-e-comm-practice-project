@@ -5,7 +5,7 @@ import { CoursesService } from "./courses.service";
 //bind h1 to text property of a dom object 
 
 @Component({
-    selector: 'courses', 
+    selector: 'courses',
     template: `
     {{ course.title | uppercase }} <br/>
     {{ course.rating | number:'1.2-2' }} <br/> 
@@ -13,6 +13,9 @@ import { CoursesService } from "./courses.service";
     <!-- currency pipe is pretty flexible  -->
     {{ course.price | currency:'AUD':false }} <br/>
     {{ course.startDate | date: 'shortDate'}} <br/>
+    <input type="text" [(ngModel)] = "title"/>
+    <br>
+    {{ title | titleCase }}
     <input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/>
     <!-- use custom pipe to create textual summary from wiki  -->
     {{ text }}
@@ -45,6 +48,12 @@ export class CoursesComponent {
     isActive = true;
     email;
     courses;
+    title: string;
+    // titleCasing($event) {
+    //     let casing = $event.target.value;
+    //     casing.toLowerCase();
+    //     return casing;
+    // }
     onKeyUp() {
         console.log(this.email);
     }
@@ -58,11 +67,12 @@ export class CoursesComponent {
     }
     onKeyUpEmailValue($event, email) {
         if ($event.keyCode === 13) {
-            console.log(email);}
+            console.log(email);
+        }
     }
 
     constructor(service: CoursesService) {
-        this.courses =  service.getCourses();
+        this.courses = service.getCourses();
 
         //need to instruct angular to inject the dependency of this argument into this constructor 
     }
