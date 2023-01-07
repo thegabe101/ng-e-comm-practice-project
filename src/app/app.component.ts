@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +10,12 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Angular app';
+  post = {
+    title: "Title",
+    isFavorite: true
+  }
+  faStar = faStar;
+  faStarHalf = faStarHalf;
 }
+
 

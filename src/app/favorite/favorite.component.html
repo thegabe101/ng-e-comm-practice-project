@@ -1,6 +1,8 @@
-<span
-  class="glyphicon"
-  [class.glyphicon-star]="isFavorite"
-  [class.glyphicon-star-empty]="!isFavorite"
-  (click)="onClick()"
-></span>
+<span (click)="onClick()">
+  <fa-icon class="faStar" [class.faStar]="isFavorite" [icon]="faStar"></fa-icon>
+  <fa-icon
+    class="faStarHalf"
+    [class.faStarHalf]="!isFavorite"
+    [icon]="faStarHalf"
+  ></fa-icon>
+</span>
